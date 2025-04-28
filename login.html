@@ -8,18 +8,26 @@
 <body>
     <div class="container">
         <h1>Login to Pocket Money</h1>
-        <form>
-         <input type="email/username" placeholder="Email/username" required>
-         <input type="password" placeholder="Password" 6digitrequired>
-         <button type="submit">Login</button>
-        </form>
+       <form onsubmit="loginUser(event)">
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+</form>
         <a href="signup.html">Don't have an account? Sign up</a>
         
         <p style="margin-top: 20px;">
     Are you an Admin? <a href="admin.html" style="color: #4CAF50; font-weight: bold;">Login here</a>
 </p>
     </div>
-    
+ <script>
+     
+function loginUser(event) {
+    event.preventDefault(); // stop form from submitting normally
+    // You can add login checking here later
+    window.location.href = "user-dashboard.html"; // redirect to dashboard
+}
+</script>
+   
 <script src="pocket-money/app.js"></script>
 
 </body>
