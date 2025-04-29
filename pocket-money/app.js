@@ -72,4 +72,21 @@ document.getElementById("google-login").addEventListener("click", () => {
       alert("Google Sign-In failed.");
     });
 });
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+const auth = getAuth();
+const googleProvider = new GoogleAuthProvider();
+
+document.getElementById("google-signup").addEventListener("click", () => {
+  signInWithPopup(auth, googleProvider)
+    .then((result) => {
+      const user = result.user;
+      alert("Account created for: " + user.displayName);
+      window.location.href = "dashboard.html"; // redirect to user dashboard
+    })
+    .catch((error) => {
+      console.error(error.message);
+      alert("Google Sign-Up failed.");
+    });
+});
 
