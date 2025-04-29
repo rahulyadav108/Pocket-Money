@@ -21,11 +21,25 @@
       background-color: #3b82f6;
       color: white;
       padding: 15px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-radius: 8px;
     }
     h1 {
       margin: 0;
+    }
+    .header-icons {
+      display: flex;
+      gap: 15px;
+    }
+    .header-icons .icon {
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .header-icons .icon:hover {
+      color: #2563eb;
     }
     .card {
       background-color: white;
@@ -82,6 +96,11 @@
   <div class="container">
     <header>
       <h1>PocketMoney - User Dashboard</h1>
+      <div class="header-icons">
+        <i class="icon">🔔</i> <!-- Notification Icon -->
+        <i class="icon">⚙️</i> <!-- Settings Icon -->
+        <i class="icon">👤</i> <!-- Profile Icon -->
+      </div>
     </header>
 
     <section class="card">
@@ -153,3 +172,4 @@
 
 </body>
 </html>
+
