@@ -1,96 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="stylesheet" href="pocket-money/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PocketMoney - User Dashboard</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f7f6;
-    }
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    header {
-      background-color: #3b82f6;
-      color: white;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 8px;
-    }
-    h1 {
-      margin: 0;
-    }
-    .header-icons {
-      display: flex;
-      gap: 15px;
-    }
-    .header-icons .icon {
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
-    .header-icons .icon:hover {
-      color: #2563eb;
-    }
-    .card {
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin: 15px 0;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .card .title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .card .content {
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-    .card .button {
-      background-color: #3b82f6;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .card .button:hover {
-      background-color: #2563eb;
-    }
-    .avatar {
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-    }
-    .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .row .column {
-      flex: 1;
-    }
-    .row .column:last-child {
-      text-align: right;
-    }
-    @media (max-width: 768px) {
-      .row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <!-- Link to your external style.css -->
+  <link rel="stylesheet" href="pocket-money/style.css"> <!-- Update the path if necessary -->
+  
+  <!-- Font Awesome CDN for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> 
+  
 </head>
 <body>
 
@@ -98,9 +17,14 @@
     <header>
       <h1>PocketMoney - User Dashboard</h1>
       <div class="header-icons">
-        <i class="icon">🔔</i> <!-- Notification Icon -->
-        <i class="icon">⚙️</i> <!-- Settings Icon -->
-        <i class="icon">👤</i> <!-- Profile Icon -->
+        <!-- Notification Icon (using Font Awesome) -->
+        <i class="fas fa-bell icon" title="Notifications"></i>
+        
+        <!-- Settings Icon (using Font Awesome) -->
+        <i class="fas fa-cogs icon" title="Settings"></i>
+        
+        <!-- Profile Icon (using Font Awesome) -->
+        <i class="fas fa-user icon" title="Profile"></i>
       </div>
     </header>
 
@@ -173,4 +97,3 @@
 
 </body>
 </html>
-
