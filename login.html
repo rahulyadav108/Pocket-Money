@@ -1,66 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="pocket-money/style.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - Pocket Money</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    input, button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin-top: 15px;
-      font-size: 16px;
-    }
-    .google-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: white;
-      border: 1px solid #ccc;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-    .google-btn img {
-      width: 20px;
-      height: 20px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Login | Pocket Money</title>
+  <link rel="stylesheet" href="pocket-money/style.css" />
 </head>
 <body>
-  <div class="container">
+  <div class="form-container">
     <h2>Login</h2>
-    <form id="login-form">
-      <input type="email" id="login-email" placeholder="Email" required />
-      <input type="password" id="login-password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
-    <button id="google-login" class="google-btn">
-      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon" />
-      Login with Google
-    </button>
+    <input type="email" id="login-email" placeholder="Email" required />
+    <input type="password" id="login-password" placeholder="Password" required />
+    <button id="login-btn">Login</button>
+
     <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    <button id="google-login">Continue with Google</button>
   </div>
 
+  <!-- Firebase SDKs -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyD8KupIb-9Yeujb0mszWbkuGmAJN6IfyUs",
@@ -76,34 +35,34 @@
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
 
-    document.getElementById("login-form").addEventListener("submit", function(e) {
-      e.preventDefault();
+    document.getElementById("login-btn").addEventListener("click", () => {
       const email = document.getElementById("login-email").value;
       const password = document.getElementById("login-password").value;
 
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           alert("Login successful!");
-          window.location.href = "user-dashboard.html";
+          window.location.href = "dashboard.html";
         })
-        .catch(error => alert("Login error: " + error.message));
+        .catch((error) => {
+          alert("Login failed: " + error.message);
+        });
     });
 
-   document.getElementById("google-login").addEventListener("click", function () {
-  const button = this;
-  button.disabled = true;
-  
-  signInWithPopup(auth, provider)
-    .then(result => {
-      alert("Welcome " + result.user.displayName);
-      window.location.href = "user-dashboard.html";
-    })
-    .catch(error => {
-      alert("Google login failed: " + error.message);
-      button.disabled = false;
-    });
-});
+    document.getElementById("google-login").addEventListener("click", function () {
+      const button = this;
+      button.disabled = true;
 
+      signInWithPopup(auth, provider)
+        .then(result => {
+          alert("Welcome " + result.user.displayName);
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => {
+          alert("Google login failed: " + error.message);
+          button.disabled = false;
+        });
+    });
   </script>
 </body>
 </html>
