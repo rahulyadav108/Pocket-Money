@@ -1,68 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login | Pocket Money</title>
-  <link rel="stylesheet" href="pocket-money/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pocket Money - Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f1f1;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-side {
+      flex: 1;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .left-side img {
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .right-side {
+      flex: 1;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .form-box {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .google-btn {
+      background: #fff;
+      color: #333;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .google-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .signup-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left-side {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Login</h2><img src="image/login-graphic.png" alt="Login Graphic" style="width: 250px; margin: 10px auto; display: block;" />
-    <input type="email" id="login-email" placeholder="Email" required />
-    <input type="password" id="login-password" placeholder="Password" required />
-    <button id="login-btn">Login</button>
-
-    <p>Don't have an account?<a href="signup.html">Sign up</a></p>
-    <button id="google-login">Continue with Google</button>
+  <div class="container">
+    <div class="left-side">
+      <img src="images/login-graphic.png" alt="Login Graphic" />
+    </div>
+    <div class="right-side">
+      <div class="form-box">
+        <h2>Login to Pocket Money</h2>
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button onclick="login()">Login</button>
+        <button class="google-btn" onclick="googleLogin()">
+          <img src="images/google-logo.png" alt="Google Logo" />
+          Login with Google
+        </button>
+        <div class="signup-link">
+          Don't have an account? <a href="signup.html">Sign up</a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Firebase SDKs -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyD8KupIb-9Yeujb0mszWbkuGmAJN6IfyUs",
-      authDomain: "pocket-money-fe0f6.firebaseapp.com",
-      projectId: "pocket-money-fe0f6",
-      storageBucket: "pocket-money-fe0f6.appspot.com",
-      messagingSenderId: "574946077776",
-      appId: "1:574946077776:web:4d731b82e7b21111e07555",
-      measurementId: "G-0HK1BQJQ5G"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-
-    document.getElementById("login-btn").addEventListener("click", () => {
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
-
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("Login successful!");
-          window.location.href = "dashboard.html";
-        })
-        .catch((error) => {
-          alert("Login failed: " + error.message);
-        });
-    });
-
-    document.getElementById("google-login").addEventListener("click", function () {
-      const button = this;
-      button.disabled = true;
-
-      signInWithPopup(auth, provider)
-        .then(result => {
-          alert("Welcome " + result.user.displayName);
-          window.location.href = "dashboard.html";
-        })
-        .catch(error => {
-          alert("Google login failed: " + error.message);
-          button.disabled = false;
-        });
-    });
-  </script>
+  <script src="app.js" type="module"></script>
 </body>
 </html>
