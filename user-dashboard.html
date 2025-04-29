@@ -1,99 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PocketMoney - User Dashboard</title>
+
   <!-- Link to your external style.css -->
-  <link rel="stylesheet" href="pocket-money/style.css"> <!-- Update the path if necessary -->
-  
+  <link rel="stylesheet" href="pocket-money/style.css" />
+
   <!-- Font Awesome CDN for Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> 
-  
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
 </head>
 <body>
-
   <div class="container">
+    <!-- Header Section -->
     <header>
       <h1>PocketMoney</h1>
       <div class="header-icons">
-        <!-- Notification Icon (using Font Awesome) -->
-        <i class="fas fa-bell icon" title="Notifications">
-        
-        <!-- Settings Icon (using Font Awesome) -->
-        <i class="fas fa-cogs icon" title="Settings">
-        
-        <!-- Profile Icon (using Font Awesome) -->
-        <i class="fas fa-user icon" title="Profile">
+        <button class="icon-button" title="Notifications">
+          <i class="fas fa-bell"></i>
+        </button>
+        <button class="icon-button" title="Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+        <button class="icon-button" title="Profile">
+          <i class="fas fa-user-circle"></i>
+        </button>
       </div>
     </header>
 
-    <section class="card">
-      <div class="row">
-        <div class="column">
-          <img src="https://via.placeholder.com/50" alt="User Avatar" class="avatar">
+    <!-- Profile Section -->
+    <section class="card profile-card">
+      <div class="profile-info">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+          alt="User Avatar"
+          class="avatar"
+        />
+        <div class="profile-details">
+          <h2>John Doe</h2>
+          <p>johndoe@example.com</p>
         </div>
-        <div class="column">
-          <div class="title">John Doe</div>
-          <div class="content">johndoe@example.com</div>
-        </div>
-        <div class="column">
-          <a href="#" class="button">Edit Profile</a>
-        </div>
+        <a href="#" class="button edit-button">Edit Profile</a>
       </div>
-      <div class="row">
-        <div class="column">
-          <div class="title">Current Coin Balance:</div>
-          <div class="content">500 Coins (₹100)</div>
-        </div>
+      <div class="balance-info">
+        <p><strong>Current Coin Balance:</strong> 500 Coins (₹100)</p>
       </div>
     </section>
 
+    <!-- Earnings Overview -->
     <section class="card">
-      <div class="title">Earnings Overview</div>
-      <div class="content">Total Coins Earned: 500</div>
-      <div class="content">Total Rupees: ₹100</div>
-      <div class="content">Available for Withdrawal: ₹50</div>
+      <h2>Earnings Overview</h2>
+      <p>Total Coins Earned: 500</p>
+      <p>Total Rupees: ₹100</p>
+      <p>Available for Withdrawal: ₹50</p>
     </section>
 
+    <!-- Task Progress and Activity -->
     <section class="card">
-      <div class="title">Task Progress and Activity</div>
-      <div class="content">Completed Tasks: 10</div>
-      <div class="content">Coins Earned: 150</div>
-      <a href="#" class="button">View Task Details</a>
+      <h2>Task Progress and Activity</h2>
+      <ul>
+        <li>Captchas Filled: 5 (50 Coins)</li>
+        <li>Spins Used: 3 (30 Coins)</li>
+        <li>Games Played: 2 (20 Coins)</li>
+      </ul>
+      <p>Incomplete Tasks: 2</p>
+      <p>Daily Progress: 70%</p>
     </section>
 
+    <!-- Daily Bonus Section -->
     <section class="card">
-      <div class="title">Daily Bonus</div>
-      <div class="content">Scratch Card: Claimed</div>
+      <h2>Daily Bonus</h2>
+      <p>Scratch Card: Claimed</p>
       <a href="#" class="button">Claim Bonus</a>
     </section>
 
+    <!-- Withdrawal Section -->
     <section class="card">
-      <div class="title">Withdrawal Section</div>
-      <div class="content">Available for withdrawal: ₹50</div>
+      <h2>Withdrawal Section</h2>
+      <p>Available for Withdrawal: ₹50</p>
       <a href="#" class="button">Withdraw</a>
+      <p>Pending Requests: 1</p>
+      <p>Approved: ₹30</p>
+      <p>Rejected: ₹0</p>
     </section>
 
+    <!-- Transaction History -->
     <section class="card">
-      <div class="title">Transaction History</div>
-      <div class="content">Recent Transactions: ₹100 withdrawal</div>
-      <a href="#" class="button">View History</a>
+      <h2>Transaction History</h2>
+      <ul>
+        <li>₹30 Withdrawal - Approved</li>
+        <li>₹20 Bonus - Credited</li>
+        <li>₹10 Withdrawal - Pending</li>
+      </ul>
     </section>
 
+    <!-- Notifications -->
     <section class="card">
-      <div class="title">Notifications</div>
-      <div class="content">New message: Task Completed!</div>
-      <a href="#" class="button">View Notifications</a>
+      <h2>Notifications</h2>
+      <ul>
+        <li>New Task Available: Fill Captchas</li>
+        <li>Bonus Opportunity: Spin the Wheel</li>
+        <li>Account Update: Profile Verified</li>
+      </ul>
     </section>
 
+    <!-- Settings and Help -->
     <section class="card">
-      <div class="title">Settings and Help</div>
-      <div class="content">Account Settings, Help Center</div>
-      <a href="#" class="button">Go to Settings</a>
+      <h2>Settings and Help</h2>
+      <ul>
+        <li><a href="#">Account Settings</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
     </section>
-
   </div>
-
 </body>
 </html>
