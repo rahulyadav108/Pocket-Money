@@ -290,3 +290,13 @@ header h1 {
     font-size: 0.9rem;
   }
 }
+.icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px;
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+}
