@@ -1,39 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>User Dashboard - Pocket Money</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PocketMoney - User Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f6;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      background-color: #3b82f6;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    h1 {
+      margin: 0;
+    }
+    .card {
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 15px 0;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .card .title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card .content {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .card .button {
+      background-color: #3b82f6;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .card .button:hover {
+      background-color: #2563eb;
+    }
+    .avatar {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .row .column {
+      flex: 1;
+    }
+    .row .column:last-child {
+      text-align: right;
+    }
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Pocket Money!</h1>
 
-        <img src="https://images.unsplash.com/photo-1590650508472-2c1abf7e4947?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" 
-        alt="User Dashboard Graphic" 
-        class="login-graphic" 
-        style="margin-bottom: 20px;">
+  <div class="container">
+    <header>
+      <h1>PocketMoney - User Dashboard</h1>
+    </header>
 
-        <div class="dashboard-content">
-            <h2>Hello, Rahul Yadav!</h2> <!-- Later you can fetch real username from Firebase -->
-            <p>Start completing tasks and earn real money daily!</p>
-
-            <div class="dashboard-buttons">
-                <a href="#">
-                    <button>🧩 Play & Earn</button>
-                </a>
-                <a href="#">
-                    <button>💰 Withdraw Earnings</button>
-                </a>
-                <a href="#">
-                    <button>🎁 Daily Bonus</button>
-                </a>
-            </div>
-
-            <a href="login.html">
-                <button style="background-color: #f44336; margin-top: 20px;">Logout</button>
-            </a>
+    <section class="card">
+      <div class="row">
+        <div class="column">
+          <img src="https://via.placeholder.com/50" alt="User Avatar" class="avatar">
         </div>
-    </div>
+        <div class="column">
+          <div class="title">John Doe</div>
+          <div class="content">johndoe@example.com</div>
+        </div>
+        <div class="column">
+          <a href="#" class="button">Edit Profile</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="title">Current Coin Balance:</div>
+          <div class="content">500 Coins (₹100)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="title">Earnings Overview</div>
+      <div class="content">Total Coins Earned: 500</div>
+      <div class="content">Total Rupees: ₹100</div>
+      <div class="content">Available for Withdrawal: ₹50</div>
+    </section>
+
+    <section class="card">
+      <div class="title">Task Progress and Activity</div>
+      <div class="content">Completed Tasks: 10</div>
+      <div class="content">Coins Earned: 150</div>
+      <a href="#" class="button">View Task Details</a>
+    </section>
+
+    <section class="card">
+      <div class="title">Daily Bonus</div>
+      <div class="content">Scratch Card: Claimed</div>
+      <a href="#" class="button">Claim Bonus</a>
+    </section>
+
+    <section class="card">
+      <div class="title">Withdrawal Section</div>
+      <div class="content">Available for withdrawal: ₹50</div>
+      <a href="#" class="button">Withdraw</a>
+    </section>
+
+    <section class="card">
+      <div class="title">Transaction History</div>
+      <div class="content">Recent Transactions: ₹100 withdrawal</div>
+      <a href="#" class="button">View History</a>
+    </section>
+
+    <section class="card">
+      <div class="title">Notifications</div>
+      <div class="content">New message: Task Completed!</div>
+      <a href="#" class="button">View Notifications</a>
+    </section>
+
+    <section class="card">
+      <div class="title">Settings and Help</div>
+      <div class="content">Account Settings, Help Center</div>
+      <a href="#" class="button">Go to Settings</a>
+    </section>
+
+  </div>
+
 </body>
 </html>
