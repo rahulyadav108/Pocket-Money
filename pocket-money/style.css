@@ -131,36 +131,26 @@ a:hover {
     background-color: #45a049;
 }
 .google-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background-color: white;
-  border: 1px solid #ddd;
-  padding: 10px 20px;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 10px;
   border-radius: 4px;
-  transition: background 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
 }
 
 .google-btn:hover {
-  background-color: #f1f1f1;
-}
-.google-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-
-.google-btn:hover {
-  background-color: #f1f1f1;
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
