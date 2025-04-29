@@ -54,3 +54,22 @@ function register() {
             alert(error.message);
         });
 }
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+const auth = getAuth();
+const provider = new GoogleAuthProvider();
+
+document.getElementById("google-login").addEventListener("click", () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      alert("Welcome, " + user.displayName);
+      // Redirect to user dashboard
+      window.location.href = "dashboard.html";
+    })
+    .catch((error) => {
+      console.error(error.message);
+      alert("Google Sign-In failed.");
+    });
+});
+
