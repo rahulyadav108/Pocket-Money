@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login - PocketMoney</title>
-  <link rel="stylesheet" href="pocket-money/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Pocket Money</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    .google-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .google-btn img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <button id="google-login" class="google-btn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon" />
+      Login with Google
+    </button>
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+  </div>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
     const firebaseConfig = {
       apiKey: "AIzaSyD8KupIb-9Yeujb0mszWbkuGmAJN6IfyUs",
       authDomain: "pocket-money-fe0f6.firebaseapp.com",
@@ -18,42 +70,32 @@
       appId: "1:574946077776:web:4d731b82e7b21111e07555",
       measurementId: "G-0HK1BQJQ5G"
     };
-    firebase.initializeApp(firebaseConfig);
-  </script>
-</head>
-<body>
-  <div class="container">
-  <h2>Login to Pocket Money</h2>
-  <form onsubmit="loginUser(event)">
-    <input type="email" id="login-email" placeholder="Email" required>
-    <input type="password" id="login-password" placeholder="Password" required>
-    <button type="submit">Login</button>
-    <button id="google-login" class="google-btn">
-         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon">
-  
-</button>
-  </form>
 
-  <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
 
-</div>
-
-  <script>
-    function loginUser(e) {
+    document.getElementById("login-form").addEventListener("submit", function(e) {
       e.preventDefault();
       const email = document.getElementById("login-email").value;
       const password = document.getElementById("login-password").value;
 
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
           alert("Login successful!");
-          window.location.href = "user-dashboard.html";
+          window.location.href = "dashboard.html";
         })
-        .catch((error) => {
-          alert(error.message);
-        });
-    }
+        .catch(error => alert("Login error: " + error.message));
+    });
+
+    document.getElementById("google-login").addEventListener("click", function() {
+      signInWithPopup(auth, provider)
+        .then(result => {
+          alert("Welcome " + result.user.displayName);
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => alert("Google login failed: " + error.message));
+    });
   </script>
-  
 </body>
 </html>
